@@ -1,0 +1,9 @@
+
+
+@if (profile()) {
+  <app-person [person]="profile().person" (personChange)="personChanged($event)"></app-person>
+
+  <input type="text" class="form-control mt-1" placeholder="Enter createdAt" [ngModel]="profile().createdAt" (ngModelChange)="updateCreateAt($event)" >
+
+}
+

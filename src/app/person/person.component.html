@@ -1,0 +1,29 @@
+<input type="text" class="form-control mt-1" placeholder="Enter name" [ngModel]="person().name" (ngModelChange)="modelChanged({name: $event})" >
+<input type="text" class="form-control mt-1" placeholder="Enter age" [ngModel]="person().age" (ngModelChange)="modelChanged({age: $event})">
+<input type="text" class="form-control mt-1" placeholder="Enter city" [(ngModel)]="person().city">
+<input type="text" class="form-control mt-1" placeholder="Enter country" [ngModel]="person().country" (ngModelChange)="modelChanged({country: $event})">
+
+
+<div class="card p-2 mt-1">
+  <h6> Frineds </h6>
+  @for (friend of person().friends; let idx = $index ; track idx) {
+    <app-person [person]="friend" (personChange)="friendChanged($event, idx)" ></app-person>
+  }
+
+  <button type="button" (click)="addFriend()"> Add </button>
+</div>
+
+<div class="card p-2 mt-1">
+  <h6> Enemies </h6>
+
+  @for (enemy of person().enemies;let idx = $index; track enemy) {
+    <app-person [person]="enemy" (personChange)="enemyChanged($event, idx)"></app-person>
+  }
+  <button type="button" (click)="addEnemy()"> Add </button>
+
+</div>
+
+
+
+
+
